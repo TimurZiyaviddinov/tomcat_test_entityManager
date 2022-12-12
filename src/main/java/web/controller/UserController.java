@@ -9,8 +9,13 @@ import web.service.UserService;
 
 @Controller
 public class UserController {
-    @Autowired
+
     UserService userService;
+
+    @Autowired
+    public UserController(UserService userService) {
+        this.userService = userService;
+    }
 
     @GetMapping(value = "/")
     public String getAllUsers(ModelMap model) {
@@ -30,7 +35,7 @@ public class UserController {
         return "redirect:/";
     }
 
-    @GetMapping (value = "/{id}delete-user")
+    @GetMapping(value = "/{id}delete-user")
     public String deleteUserQuestion(ModelMap model, @PathVariable("id") int id) {
         model.addAttribute("user", userService.getUserById(id));
         return "delete-user";
