@@ -23,8 +23,13 @@ import java.util.Properties;
 @ComponentScan("web")
 public class HibernateConfig {
 
+    private Environment env;
+
     @Autowired
-    Environment env;
+    public HibernateConfig(Environment env) {
+        this.env = env;
+    }
+
     @Bean
     public DataSource getDataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();

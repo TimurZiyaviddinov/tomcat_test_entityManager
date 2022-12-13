@@ -10,7 +10,7 @@ public interface UserService {
     void updateUser(User user);
     void addUser(User user);
 
-    User getUserById(int id);
+    User getUserById(Long id);
 
     void deleteUser(User user);
 }

@@ -10,7 +10,7 @@ import web.service.UserService;
 @Controller
 public class UserController {
 
-    UserService userService;
+    private UserService userService;
 
     @Autowired
     public UserController(UserService userService) {
@@ -35,8 +35,8 @@ public class UserController {
         return "redirect:/";
     }
 
-    @GetMapping(value = "/{id}delete-user")
-    public String deleteUserQuestion(ModelMap model, @PathVariable("id") int id) {
+    @GetMapping(value = "/{id}/delete-user")
+    public String deleteUserQuestion(ModelMap model, @PathVariable("id") Long id) {
         model.addAttribute("user", userService.getUserById(id));
         return "delete-user";
     }
@@ -47,8 +47,8 @@ public class UserController {
         return "redirect:/";
     }
 
-    @GetMapping(value = "/{id}edit")
-    public String editUser(ModelMap model, @PathVariable("id") int id) {
+    @GetMapping(value = "/{id}/edit")
+    public String editUser(ModelMap model, @PathVariable("id") Long id) {
         model.addAttribute("user", userService.getUserById(id));
         return "edit";
     }
